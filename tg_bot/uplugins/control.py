@@ -5,7 +5,7 @@ from tg_bot.tg_bot import TG_UBOT as ubot
 
 async def send_msg(client, message, text):
     if message.from_user.id == OWNER_ID:
-        message.delete()
+        await message.delete()
         await message.reply(text)
     else:
         await message.edit_text(text)
