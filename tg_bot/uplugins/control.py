@@ -136,9 +136,6 @@ async def get_user_id(client, message):
     )
 
 
-app.get_messages(chat_id, 12345)
-
-
 @ubot.on_message(
     (filters.me | filters.user(OWNER_ID))
     & filters.command("chatidfromlink", ["/", "."])
