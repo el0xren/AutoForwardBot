@@ -19,20 +19,19 @@ async def alive_msg(client, message):
     await send_msg(
         client,
         message,
-        "<b>Hey ya, I'm Alive 🙌</b>\n send <code>/help</code> to see avaliable commands" )
+        "<b>Hey ya, I'm Alive 🙌</b>\n send <code>/help</code> to see avaliable commands",
+    )
 
 
 @ubot.on_message(
-    (filters.me | filters.user(OWNER_ID))
-    & filters.command("help", ["/", "."])
+    (filters.me | filters.user(OWNER_ID)) & filters.command("help", ["/", "."])
 )
 async def help_msg(client, message):
     await send_msg(
         client,
         message,
         "\n\n🤖 <b>Avaliable Commands:</b>\n- /alive or /start: to check if bot is alive\n- /join or /add: followed by channel link or username\n- /leave or /remove: followed by channel link or username\n\n <b>You can Prefix commands with / or .</b>",
- )
-
+    )
 
 
 @ubot.on_message(
@@ -40,8 +39,12 @@ async def help_msg(client, message):
 )
 async def join_channel(client, message):
     if len(message.command) != 2:
-    	await send_msg(client, message, "⚠ Please use <b>/join or /add:</b> followed by channel <u>link</u> or <u>username</u>\ni.e: <code>/add @telegram</code>")
-    	return
+        await send_msg(
+            client,
+            message,
+            "⚠ Please use <b>/join or /add:</b> followed by channel <u>link</u> or <u>username</u>\ni.e: <code>/add @telegram</code>",
+        )
+        return
     try:
         await send_msg(
             client,
@@ -63,8 +66,12 @@ async def join_channel(client, message):
 )
 async def leave_channel(client, message):
     if len(message.command) != 2:
-    	await send_msg(client, message, "⚠ Please use <b>/leave or /remove:</b> followed by <u>username</u>\ni.e: <code>/remove @telegram</code>")
-    	return
+        await send_msg(
+            client,
+            message,
+            "⚠ Please use <b>/leave or /remove:</b> followed by <u>username</u>\ni.e: <code>/remove @telegram</code>",
+        )
+        return
     try:
         await send_msg(
             client,
