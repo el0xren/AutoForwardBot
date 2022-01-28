@@ -1,4 +1,4 @@
-from pyrogram import filters
+;from pyrogram import filters
 from tg_bot import OWNER_ID, logger
 from tg_bot.tg_bot import TG_UBOT as ubot
 
@@ -128,9 +128,9 @@ async def get_chat_id(client, message):
     & filters.command(["id", "getuserid"], ["/", "."])
 )
 async def get_user_id(client, message):
-    taget_msg = message.reply_to_message if message.reply_to_message else message
+    target_msg = message.reply_to_message if message.reply_to_message else message
     await send_msg(
         client,
         message,
-        f"<b>{taget_msg.from_user.first_name}'s</b> ID is <code>{target_msg.from_user.id}</code>",
+        f"<b>{target_msg.from_user.first_name}'s</b> ID is <code>{target_msg.from_user.id}</code>",
     )
