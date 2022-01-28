@@ -155,8 +155,10 @@ async def get_chat_id_from_link(client, message):
         )
         _, msg_data = message.command[-1].split("/c/")
         ch_id, msg_id = msg_data.split("/")
+        if not ch_id.isdecimal():
+        	print("chatid err")
         ch_id_int = int(f"-100{ch_id}")
-        target_message = await client.get_messages(ch_id_int, msg_id)
+        chat = await client.get_chat(ch_id_int)
         await send_msg(client, message, f"✅ <b>ID:</b>\n<code>{ch_id_int}</code>")
     except Exception as e:
         await send_msg(client, message, f"❌ <b>Error:</b>\n{e}")
