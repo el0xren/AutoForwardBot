@@ -18,7 +18,7 @@ async def alive_msg(client, message):
     await send_msg(
         client,
         message,
-        "Hi, I'm Alive 🙌\n\n<b>Avaliable Commands:</b>\n- /alive or /start: to check if bot is alive\n- /join or /add: folowed by channel link or username\n- leave or remove: followed by channel link or username\n\n <b>You can Prefix commands with / or .</b>",
+        "Hi, I'm Alive 🙌\n\n<b>Avaliable Commands:</b>\n- /alive or /start: to check if bot is alive\n- /join or /add: followed by channel link or username\n- /leave or /remove: followed by channel link or username\n\n <b>You can Prefix commands with / or .</b>",
     )
 
 
