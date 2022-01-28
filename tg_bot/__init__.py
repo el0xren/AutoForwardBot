@@ -22,6 +22,6 @@ SESSION = os.environ.get("SESSION", "")
 DUMP_CHANNEL = int(os.environ.get("DUMP_CHANNEL", 0))
 OWNER_ID = int(os.environ.get("OWNER_ID", 0))
 try:
-    CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "").split())
+    CHANNELS = list(int(x) for x in os.environ.get("CHANNELS", "").split())
 except ValueError:
     raise Exception("Your channel list does not contain valid integers.")
