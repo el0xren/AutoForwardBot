@@ -154,11 +154,8 @@ async def get_chat_id_from_link(client, message):
             f"🔄 <b>Trying get chat id:</b>\n<code>{message.command[-1]}</code>",
         )
         _, msg_data = message.command[-1].split("/c/")
-
-        if len(msg_data) != 2:
-            raise Exception("invalid link")
         ch_id, msg_id = msg_data.split("/")
-        ch_id_int = int(f"{-100}{ch_id}")
+        ch_id_int = int(f"-100{ch_id}")
         target_message = await client.get_messages(ch_id_int, msg_id)
         await send_msg(
             client, message, f"✅ <b>ID:</b>\n<code>{target_message} .chat.id</code>"
