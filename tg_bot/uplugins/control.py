@@ -157,9 +157,7 @@ async def get_chat_id_from_link(client, message):
         ch_id, msg_id = msg_data.split("/")
         ch_id_int = int(f"-100{ch_id}")
         target_message = await client.get_messages(ch_id_int, msg_id)
-        await send_msg(
-            client, message, f"✅ <b>ID:</b>\n<code>{target_message} .chat.id</code>"
-        )
+        await send_msg(client, message, f"✅ <b>ID:</b>\n<code>{ch_id_int}</code>")
     except Exception as e:
         await send_msg(client, message, f"❌ <b>Error:</b>\n{e}")
         logger.error(e)
