@@ -155,8 +155,15 @@ async def get_chat_id_from_link(client, message):
             f"🔄 <b>Trying get chat id:</b>\n<code>{message.command[-1]}</code>",
         )
         _, link = message.command[-1].split("t.me/")
-        username, msg_id = link.split("/")
-        target_message = await client.get_messages(username, msg_id)
+        if len(link) > 2:
+            _, ch_id, msg_id = link.split("/")
+            if ch_id.isdecimal():
+                ch_id = int(ch_id)
+        elif len(link) == 2:
+            ch_id, msg_id = link.split("/")
+        else:
+            raise Exception("invalid link")
+        target_message = await client.get_messages(ch_id, msg_id)
         await send_msg(
             client, message, f"✅ <b>ID:</b>\n<code>{target_message} .chat.id</code>"
         )
