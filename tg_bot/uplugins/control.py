@@ -155,7 +155,7 @@ async def get_chat_id_from_link(client, message):
         )
         _, msg_data = message.command[-1].split("/c/")
 
-        if len(link) != 2:
+        if len(msg_data) != 2:
             raise Exception("invalid link")
         ch_id, msg_id = msg_data.split("/")
         ch_id_int = int(f"{-100}{ch_id}")
