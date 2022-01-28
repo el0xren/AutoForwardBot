@@ -18,7 +18,6 @@ if sys.version_info[0] < 3 or sys.version_info[1] < 8:
 
 APP_ID = int(os.environ.get("APP_ID", 0))
 API_HASH = os.environ.get("API_HASH", "")
-TOKEN = os.environ.get("TOKEN", "")
 SESSION = os.environ.get("SESSION", "")
 DUMP_CHANNEL = int(os.environ.get("DUMP_CHANNEL", 0))
 OWNER_ID = int(os.environ.get("OWNER_ID", 0))

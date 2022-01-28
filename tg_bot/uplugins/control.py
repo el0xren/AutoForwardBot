@@ -1,5 +1,5 @@
 from pyrogram import filters
-from tg_bot import OWNER_ID
+from tg_bot import OWNER_ID, logger
 from tg_bot.tg_bot import TG_UBOT as ubot
 
 
@@ -38,6 +38,7 @@ async def join_channel(client, message):
         )
     except Exception as e:
         await send_msg(client, message, f"❌ <b>Error</b>\n{e}")
+        logger.error(e)
 
 
 @ubot.on_message(
@@ -57,3 +58,4 @@ async def leave_channel(client, message):
         )
     except Exception as e:
         await send_msg(client, message, f"❌ <b>Error:</b>\n{e}")
+        logger.error(e)
