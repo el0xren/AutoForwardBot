@@ -4,7 +4,9 @@ from tg_bot import DUMP_CHANNEL, logger
 from tg_bot.tg_bot import TG_UBOT as ubot
 
 
-@ubot.on_message(filters.channel & ~filters.chat(DUMP_CHANNEL) & ~filters.edited)
+@ubot.on_message(
+    filters.channel & ~filters.chat(DUMP_CHANNEL) & ~filters.edited & ~filters.reply
+)
 async def msg_forward(client, message):
     cap = message.caption if message.caption else ""
     if message.text:
@@ -19,8 +21,10 @@ async def msg_forward(client, message):
             file_path = await message.download()
             await client.send_document(DUMP_CHANNEL, file_path, cap)
         elif message.photo:
-            file_path = await message.download()
-            await client.send_photo(DUMP_CHANNEL, file_path, cap)
+            #    file_path = await message.download()
+            #     await client.send_photo(DUMP_CHANNEL, file_path, cap)
+            if cap := "":
+                await client.send_message(DUMP_CHANNEL, cap)
         elif message.video:
             file_path = await message.download()
             await client.send_video(DUMP_CHANNEL, file_path, cap)

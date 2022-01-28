@@ -134,3 +134,35 @@ async def get_user_id(client, message):
         message,
         f"<b>{target_msg.from_user.first_name}'s</b> ID is <code>{target_msg.from_user.id}</code>",
     )
+
+
+app.get_messages(chat_id, 12345)
+
+
+@ubot.on_message(
+    (filters.me | filters.user(OWNER_ID))
+    & filters.command("chatidfromlink", ["/", "."])
+)
+async def get_chat_id_from_link(client, message):
+    if len(message.command) != 2:
+        await send_msg(
+            client,
+            message,
+            "⚠ Please use <b>/chatid or /getchatid:</b> followed by <u>username</u> or <u>link</u>\ni.e: <code>/id @telegram</code>",
+        )
+        return
+    try:
+        await send_msg(
+            client,
+            message,
+            f"🔄 <b>Trying get chat id:</b>\n<code>{message.command[-1]}</code>",
+        )
+        _, link = message.command[-1].split("t.me/")
+        username, msg_id = link.split("/")
+        target_message = await client.get_messages(username, msg_id)
+        await send_msg(
+            client, message, f"✅ <b>ID:</b>\n<code>{target_message} .chat.id</code>"
+        )
+    except Exception as e:
+        await send_msg(client, message, f"❌ <b>Error:</b>\n{e}")
+        logger.error(e)
