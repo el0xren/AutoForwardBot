@@ -114,8 +114,8 @@ async def get_chat_id(client, message):
         )
         try:
             await join_channel(client, message)
-        except:
-            pass
+        except Exception as e:
+            raise Exception(e)
         chat = await client.get_chat(message.command[-1].strip("@"))
         await send_msg(client, message, f"✅ <b>ID:</b>\n<code>{chat.id}</code>")
     except Exception as e:
