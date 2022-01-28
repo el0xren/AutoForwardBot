@@ -1,11 +1,15 @@
 import os
 from pyrogram import filters
-from tg_bot import DUMP_CHANNEL, logger
+from tg_bot import DUMP_CHANNEL, CHANNELS, logger
 from tg_bot.tg_bot import TG_UBOT as ubot
 
 
 @ubot.on_message(
-    filters.channel & ~filters.chat(DUMP_CHANNEL) & ~filters.edited & ~filters.reply
+    filters.chat(CHANNELS)
+    & filters.channel
+    & ~filters.chat(DUMP_CHANNEL)
+    & ~filters.edited
+    & ~filters.reply
 )
 async def msg_forward(client, message):
     cap = message.caption if message.caption else ""
