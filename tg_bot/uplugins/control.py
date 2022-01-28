@@ -1,4 +1,4 @@
-;from pyrogram import filters
+from pyrogram import filters
 from tg_bot import OWNER_ID, logger
 from tg_bot.tg_bot import TG_UBOT as ubot
 
