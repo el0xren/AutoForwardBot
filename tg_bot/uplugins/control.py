@@ -137,8 +137,7 @@ async def get_user_id(client, message):
 
 
 @ubot.on_message(
-    (filters.me | filters.user(OWNER_ID))
-    & filters.command("chatidfromlink", ["/", "."])
+    (filters.me | filters.user(OWNER_ID)) & filters.command("pchatid", ["/", "."])
 )
 async def get_chat_id_from_link(client, message):
     if len(message.command) != 2:
@@ -154,16 +153,13 @@ async def get_chat_id_from_link(client, message):
             message,
             f"🔄 <b>Trying get chat id:</b>\n<code>{message.command[-1]}</code>",
         )
-        _, link = message.command[-1].split("t.me/")
-        if len(link) > 2:
-            _, ch_id, msg_id = link.split("/")
-            if ch_id.isdecimal():
-                ch_id = int("-100" + ch_id)
-        elif len(link) == 2:
-            ch_id, msg_id = link.split("/")
-        else:
+        _, data = message.command[-1].split("/c/")
+
+        if len(link) != 2:
             raise Exception("invalid link")
-        target_message = await client.get_messages(ch_id, msg_id)
+        ch_id, msg_id = link.split("/")
+        ch_id_int = int(f"{-100}{ch_id}")
+        target_message = await client.get_messages(ch_id_int, msg_id)
         await send_msg(
             client, message, f"✅ <b>ID:</b>\n<code>{target_message} .chat.id</code>"
         )
