@@ -158,7 +158,7 @@ async def get_chat_id_from_link(client, message):
         if len(link) > 2:
             _, ch_id, msg_id = link.split("/")
             if ch_id.isdecimal():
-                ch_id = int("-100"+ch_id)
+                ch_id = int("-100" + ch_id)
         elif len(link) == 2:
             ch_id, msg_id = link.split("/")
         else:
