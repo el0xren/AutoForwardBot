@@ -31,9 +31,11 @@ async def help_msg(client, message):
 🤖 <b>Avaliable Commands:</b>
 
 - <b>/alive or /start</b>: to check if bot is alive.
-- <b>/join or /add</b>: followed by channel <u>link</u> or <u>username</u>.
-- <b>/leave or /remove</b>: followed by channel <u>username</u>.
-- <b>/chatid or /getchatid</b>: followed by channel <u>link</u> or <u>username</u>.
+- <b>/join or /add</b>: followed by channel <u>link</u> or <u>username</u> to join a chat.
+- <b>/leave or /remove</b>: followed by channel <u>username</u> to leave a chat.
+- <b>/id or /getuserid</b>: shows your id or reply to someone's message to get his id.
+- <b>/chatid or /getchatid</b>: followed by channel <u>link</u> or <u>username</u> to get chat id.
+- <b>/privatchatid</b>: followed by a message link to get chat id.
 
 <b>You can Prefix commands with / or .</b>",
   
@@ -137,7 +139,7 @@ async def get_user_id(client, message):
 
 
 @ubot.on_message(
-    (filters.me | filters.user(OWNER_ID)) & filters.command("pchatid", ["/", "."])
+    (filters.me | filters.user(OWNER_ID)) & filters.command("privatchatid", ["/", "."])
 )
 async def get_chat_id_from_link(client, message):
     if len(message.command) != 2:
