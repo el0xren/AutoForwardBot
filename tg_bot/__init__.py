@@ -20,6 +20,7 @@ APP_ID = int(os.environ.get("APP_ID", 0))
 API_HASH = os.environ.get("API_HASH", "")
 SESSION = os.environ.get("SESSION", "")
 DUMP_CHANNEL = int(os.environ.get("DUMP_CHANNEL", 0))
+OWNER_ID = int(os.environ.get("OWNER_ID", 0))
 try:
     CHANNELS = set(int(x) for x in os.environ.get("CHANNELS", "").split())
 except ValueError:
