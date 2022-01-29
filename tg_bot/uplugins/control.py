@@ -146,7 +146,7 @@ async def get_chat_id_from_link(client, message):
         await send_msg(
             client,
             message,
-            "⚠ Please use <b>/chatid or /getchatid:</b> followed by <u>username</u> or <u>link</u>\ni.e: <code>/id @telegram</code>",
+            "⚠ Please use <b>/privatchatid </b> followed by <u> message link </u> \ni.e: <code>/privatchatid t.me/c/1234/5</code>",
         )
         return
     try:
