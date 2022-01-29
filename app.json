@@ -2,5 +2,26 @@
   "name": "AutoForward",
   "description": "A modular telegram bot running on python3 with pyrogram.",
   "logo": "https://www.gizmochina.com/wp-content/uploads/2021/02/Telegram-Logo-Featured.jpg",
-  "keywords": ["telegram", "tgbot"]
+  "keywords": ["telegram", "tgbot"],
+  "env": {
+    "APP_ID": {
+      "description": "app_id get from my.telegram.org",
+    },
+    "API_HASH": {
+      "description": "api_hash get from my.telegram.org"
+    },
+    "SESSION": {
+      "description": "Pyrogram string sessiom"
+    },
+    "DUMP_CHANNEL": {
+      "description": "The channel to post messages on."
+    },
+    
+    "CHANNELS": {
+      "description": "Channels to forward from format: 123 123"
+   },
+    "OWNER_ID": {
+      "description": "Second account to control the bot"
+    }
+  }
 }
