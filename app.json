@@ -5,7 +5,7 @@
   "keywords": ["telegram", "tgbot"],
   "env": {
     "APP_ID": {
-      "description": "app_id get from my.telegram.org",
+      "description": "app_id get from my.telegram.org"
     },
     "API_HASH": {
       "description": "api_hash get from my.telegram.org"
