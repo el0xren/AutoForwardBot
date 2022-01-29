@@ -12,7 +12,7 @@ from tg_bot.tg_bot import TG_UBOT as ubot
     & ~filters.reply
 )
 async def msg_forward(client, message):
-    cap = message.caption if message.caption else text
+    cap = message.caption if message.caption else message.text
     if cap:
         try:
             await client.send_message(DUMP_CHANNEL, cap)
