@@ -12,23 +12,21 @@ from tg_bot.tg_bot import TG_UBOT as ubot
     & ~filters.reply
 )
 async def msg_forward(client, message):
-    cap = message.caption if message.caption else ""
-    if message.text:
+    cap = message.caption if message.caption else text
+    if cap:
         try:
-            await message.copy(DUMP_CHANNEL)
+            await client.send_message(DUMP_CHANNEL, cap)
         except Exception as e:
             logger.error(e)
-        return
+    return
     file_path = ""
     try:
         if message.document:
             file_path = await message.download()
             await client.send_document(DUMP_CHANNEL, file_path, cap)
         elif message.photo:
-            #    file_path = await message.download()
-            #     await client.send_photo(DUMP_CHANNEL, file_path, cap)
-            if cap := "":
-                await client.send_message(DUMP_CHANNEL, cap)
+            file_path = await message.download()
+            await client.send_photo(DUMP_CHANNEL, file_path, cap)
         elif message.video:
             file_path = await message.download()
             await client.send_video(DUMP_CHANNEL, file_path, cap)
